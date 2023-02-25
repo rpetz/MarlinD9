@@ -59,7 +59,7 @@
 #
 
 # This defines the board to compile for (see boards.h for your board's ID)
-HARDWARE_MOTHERBOARD ?= 1020
+HARDWARE_MOTHERBOARD ?= 11
 
 ifeq ($(OS),Windows_NT)
   # Windows
@@ -114,10 +114,10 @@ WIRE               ?= 0
 TONE               ?= 1
 
 # This defines if U8GLIB is needed (may require RELOC_WORKAROUND)
-U8GLIB             ?= 0
+U8GLIB             ?= 1
 
 # This defines whether to include the Trinamic TMCStepper library
-TMC                ?= 0
+TMC                ?= 1
 
 # This defines whether to include the AdaFruit NeoPixel library
 NEOPIXEL           ?= 0

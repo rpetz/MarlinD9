@@ -2,9 +2,8 @@
 
 #include "env_validate.h"
 
-#ifndef BOARD_INFO_NAME
-  #define BOARD_INFO_NAME "I3PLUS3030"
-#endif
+#define BOARD_INFO_NAME "I3PLUS3030"
+#define BOARD_NAME "I3PLUS3030"
 
 #define LARGE_FLASH true
 #define X_STEP_PIN         61 

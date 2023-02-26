@@ -59,7 +59,7 @@
 #
 
 # This defines the board to compile for (see boards.h for your board's ID)
-HARDWARE_MOTHERBOARD ?= 11
+HARDWARE_MOTHERBOARD ?= 1331
 
 ifeq ($(OS),Windows_NT)
   # Windows

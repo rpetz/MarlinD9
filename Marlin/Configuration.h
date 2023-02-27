@@ -29,6 +29,22 @@
 #define Force10SProDisplay
 #define MeshStd
 
+#define W9_DEFAULT_AXIS_STEPS_PER_UNIT   { 80.121, 80.121, 399.778, 94.3 } // X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
+#define W9_DEFAULT_MAX_FEEDRATE          { 300, 300, 50, 40 }              // X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
+#define W9_DEFAULT_MAX_ACCELERATION      { 2000, 2000, 100, 10000 }        // X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
+#define W9_DEFAULT_ACCELERATION          800                               // X, Y, Z and E acceleration for printing moves
+#define W9_DEFAULT_RETRACT_ACCELERATION  10000                             // E acceleration for retracts
+#define W9_DEFAULT_TRAVEL_ACCELERATION   2000                              // X, Y, Z acceleration for travel (non printing) moves
+#define W9_DEFAULT_EJERK                 5.0                               // May be used by Linear Advance
+#define W9_XY_PROBE_FEEDRATE             5000                              // X and Y axis travel speed (mm/min) between probes
+#define W9_Z_PROBE_FEEDRATE_FAST         (4*60)                            // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
+#define W9_Z_PROBE_FEEDRATE_SLOW         (Z_PROBE_FEEDRATE_FAST / 2)       // Feedrate (mm/min) for the "accurate" probe of each point
+#define W9_Z_CLEARANCE_DEPLOY_PROBE      15                                // Z Clearance for Deploy/Stow
+#define W9_Z_CLEARANCE_BETWEEN_PROBES     5                                // Z Clearance between probe points
+#define W9_Z_CLEARANCE_MULTI_PROBE        5                                // Z Clearance between multiple probes
+#define W9_Z_AFTER_PROBING               15                                // Z position after probing is done
+#define W9_Z_PROBE_LOW_POINT             -3                                // Farthest distance below the trigger-point to go before stopping
+
 //Wanhao D9 Mk2 Model selector
 //#define ModelFactory300
 //#define ModelFactory400
@@ -1222,14 +1238,14 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.121, 80.121, 399.778, 94.3 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   W9_DEFAULT_AXIS_STEPS_PER_UNIT
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 50, 40 }
+#define DEFAULT_MAX_FEEDRATE          W9_DEFAULT_MAX_FEEDRATE
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1242,7 +1258,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 100, 10000 }
+#define DEFAULT_MAX_ACCELERATION      W9_DEFAULT_MAX_ACCELERATION
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1257,9 +1273,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          800      // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  10000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   2000     // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          W9_DEFAULT_ACCELERATION
+#define DEFAULT_RETRACT_ACCELERATION  W9_DEFAULT_RETRACT_ACCELERATION
+#define DEFAULT_TRAVEL_ACCELERATION   W9_DEFAULT_TRAVEL_ACCELERATION
 
 /**
  * Default Jerk limits (mm/s)
@@ -1289,7 +1305,7 @@
   #endif
 #endif
 
-#define DEFAULT_EJERK    5.0  // May be used by Linear Advance
+#define DEFAULT_EJERK    W9_DEFAULT_EJERK
 
 /**
  * Junction Deviation Factor
@@ -1551,13 +1567,13 @@
 #define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_FEEDRATE 5000
+#define XY_PROBE_FEEDRATE W9_XY_PROBE_FEEDRATE
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-#define Z_PROBE_FEEDRATE_FAST (4*60)
+#define Z_PROBE_FEEDRATE_FAST W9_Z_PROBE_FEEDRATE_FAST
 
 // Feedrate (mm/min) for the "accurate" probe of each point
-#define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)
+#define Z_PROBE_FEEDRATE_SLOW W9_Z_PROBE_FEEDRATE_SLOW
 
 /**
  * Probe Activation Switch
@@ -1621,12 +1637,12 @@
  * Example: `M851 Z-5` with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
-#define Z_CLEARANCE_DEPLOY_PROBE   15 // Z Clearance for Deploy/Stow
-#define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
-#define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
-#define Z_AFTER_PROBING            15 // Z position after probing is done
+#define Z_CLEARANCE_DEPLOY_PROBE   W9_Z_CLEARANCE_DEPLOY_PROBE // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_BETWEEN_PROBES W9_Z_CLEARANCE_BETWEEN_PROBES // Z Clearance between probe points
+#define Z_CLEARANCE_MULTI_PROBE    W9_Z_CLEARANCE_MULTI_PROBE // Z Clearance between multiple probes
+#define Z_AFTER_PROBING            W9_Z_AFTER_PROBING // Z position after probing is done
 
-#define Z_PROBE_LOW_POINT          -3 // Farthest distance below the trigger-point to go before stopping
+#define Z_PROBE_LOW_POINT          W9_Z_PROBE_LOW_POINT // Farthest distance below the trigger-point to go before stopping
 
 // For M851 give a range for adjusting the Z probe offset
 #define Z_PROBE_OFFSET_RANGE_MIN -20

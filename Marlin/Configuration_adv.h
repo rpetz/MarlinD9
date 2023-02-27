@@ -1424,7 +1424,7 @@
 
 #if ANY(HAS_DISPLAY, DWIN_LCD_PROUI, DWIN_CREALITY_LCD_JYERSUI)
   //#define SOUND_MENU_ITEM   // Add a mute option to the LCD menu
-  #define SOUND_ON_DEFAULT    // Buzzer/speaker default enabled state
+  //#define SOUND_ON_DEFAULT    // Buzzer/speaker default enabled state
 #endif
 
 #if EITHER(HAS_DISPLAY, DWIN_LCD_PROUI)
@@ -1863,7 +1863,7 @@
   #define DGUS_TX_BUFFER_SIZE 48
   //#define SERIAL_STATS_RX_BUFFER_OVERRUNS  // Fix Rx overrun situation (Currently only for AVR)
 
-  #define DGUS_UPDATE_INTERVAL_MS  500    // (ms) Interval between automatic screen updates
+  #define DGUS_UPDATE_INTERVAL_MS  250    // (ms) Interval between automatic screen updates
 
   #if ANY(DGUS_LCD_UI_FYSETC, DGUS_LCD_UI_MKS, DGUS_LCD_UI_HIPRECY)
     #define DGUS_PRINT_FILENAME           // Display the filename during printing
@@ -4222,7 +4222,7 @@
 //#define PINS_DEBUGGING
 
 // Enable Tests that will run at startup and produce a report
-#define MARLIN_TEST_BUILD
+//#define MARLIN_TEST_BUILD
 
 // Enable Marlin dev mode which adds some special commands
 //#define MARLIN_DEV_MODE

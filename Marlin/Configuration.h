@@ -31,19 +31,19 @@
 
 #define W9_DEFAULT_AXIS_STEPS_PER_UNIT   { 80.121, 80.121, 399.778, 94.3 } // X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
 #define W9_DEFAULT_MAX_FEEDRATE          { 300, 300, 50, 40 }              // X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
-#define W9_DEFAULT_MAX_ACCELERATION      { 2000, 2000, 100, 10000 }        // X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
-#define W9_DEFAULT_ACCELERATION          800                               // X, Y, Z and E acceleration for printing moves
-#define W9_DEFAULT_RETRACT_ACCELERATION  10000                             // E acceleration for retracts
-#define W9_DEFAULT_TRAVEL_ACCELERATION   2000                              // X, Y, Z acceleration for travel (non printing) moves
+#define W9_DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 10000 }        // X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
+#define W9_DEFAULT_ACCELERATION          3000                              // X, Y, Z and E acceleration for printing moves
+#define W9_DEFAULT_RETRACT_ACCELERATION  3000                              // E acceleration for retracts
+#define W9_DEFAULT_TRAVEL_ACCELERATION   3000                              // X, Y, Z acceleration for travel (non printing) moves
 #define W9_DEFAULT_EJERK                 5.0                               // May be used by Linear Advance
-#define W9_XY_PROBE_FEEDRATE             5000                              // X and Y axis travel speed (mm/min) between probes
-#define W9_Z_PROBE_FEEDRATE_FAST         (4*60)                            // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-#define W9_Z_PROBE_FEEDRATE_SLOW         (Z_PROBE_FEEDRATE_FAST / 2)       // Feedrate (mm/min) for the "accurate" probe of each point
-#define W9_Z_CLEARANCE_DEPLOY_PROBE      15                                // Z Clearance for Deploy/Stow
+#define W9_XY_PROBE_FEEDRATE             (133*60)                          // X and Y axis travel speed (mm/min) between probes
+#define W9_Z_PROBE_FEEDRATE_FAST         (2000 / 3)                        // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
+#define W9_Z_PROBE_FEEDRATE_SLOW         (2000 / 3)                        // Feedrate (mm/min) for the "accurate" probe of each point
+#define W9_Z_CLEARANCE_DEPLOY_PROBE       5                                // Z Clearance for Deploy/Stow
 #define W9_Z_CLEARANCE_BETWEEN_PROBES     5                                // Z Clearance between probe points
 #define W9_Z_CLEARANCE_MULTI_PROBE        5                                // Z Clearance between multiple probes
-#define W9_Z_AFTER_PROBING               15                                // Z position after probing is done
-#define W9_Z_PROBE_LOW_POINT             -3                                // Farthest distance below the trigger-point to go before stopping
+#define W9_Z_AFTER_PROBING                5                                // Z position after probing is done
+#define W9_Z_PROBE_LOW_POINT             -100                              // Farthest distance below the trigger-point to go before stopping
 
 //Wanhao D9 Mk2 Model selector
 //#define ModelFactory300
@@ -205,7 +205,7 @@
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-//#define CUSTOM_MACHINE_NAME "3D Printer"
+#define CUSTOM_MACHINE_NAME "Wanhao D9"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -1173,24 +1173,29 @@
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
 #define X_MIN_ENDSTOP_INVERTING true  // Set to true to invert the logic of the endstop.
-#define Y_MIN_ENDSTOP_INVERTING true   // Set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING false  // Set to true to invert the logic of the endstop.
-#define I_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define J_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define K_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define U_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define V_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define W_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define X_MAX_ENDSTOP_INVERTING true  // Set to true to invert the logic of the endstop.
+
+#define Y_MIN_ENDSTOP_INVERTING true  // Set to true to invert the logic of the endstop.
 #define Y_MAX_ENDSTOP_INVERTING true  // Set to true to invert the logic of the endstop.
+
+#define Z_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define Z_MAX_ENDSTOP_INVERTING true  // Set to true to invert the logic of the endstop.
-#define I_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define J_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define K_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define U_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define V_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define W_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define Z_MIN_PROBE_ENDSTOP_INVERTING false  // Set to true to invert the logic of the probe.
+
+
+#define I_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define I_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define J_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define J_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define K_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define K_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define U_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define U_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define V_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define V_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define W_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define W_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
@@ -1328,7 +1333,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-//#define S_CURVE_ACCELERATION
+#define S_CURVE_ACCELERATION
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -1347,7 +1352,7 @@
 #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
-//#define USE_PROBE_FOR_Z_HOMING
+#define USE_PROBE_FOR_Z_HOMING
 
 /**
  * Z_MIN_PROBE_PIN
@@ -1564,7 +1569,7 @@
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 10
+//#define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_FEEDRATE W9_XY_PROBE_FEEDRATE
@@ -1818,7 +1823,7 @@
  */
 
 // Min software endstops constrain movement within minimum coordinate bounds
-#define MIN_SOFTWARE_ENDSTOPS
+//#define MIN_SOFTWARE_ENDSTOPS
 #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
   #define MIN_SOFTWARE_ENDSTOP_X
   #define MIN_SOFTWARE_ENDSTOP_Y
@@ -1832,7 +1837,7 @@
 #endif
 
 // Max software endstops constrain movement within maximum coordinate bounds
-#define MAX_SOFTWARE_ENDSTOPS
+//#define MAX_SOFTWARE_ENDSTOPS
 #if ENABLED(MAX_SOFTWARE_ENDSTOPS)
   #define MAX_SOFTWARE_ENDSTOP_X
   #define MAX_SOFTWARE_ENDSTOP_Y
@@ -1973,7 +1978,7 @@
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-#define RESTORE_LEVELING_AFTER_G28
+//#define RESTORE_LEVELING_AFTER_G28
 //#define ENABLE_LEVELING_AFTER_G28
 
 /**
@@ -1999,7 +2004,7 @@
  * Turn on with the command 'M111 S32'.
  * NOTE: Requires a lot of PROGMEM!
  */
-//#define DEBUG_LEVELING_FEATURE
+#define DEBUG_LEVELING_FEATURE
 
 #if ANY(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL, PROBE_MANUALLY)
   // Set a height for the start of manual adjustment
@@ -2012,7 +2017,7 @@
    * at which point movement will be level to the machine's XY plane.
    * The height can be set with M420 Z<height>
    */
-  #define ENABLE_LEVELING_FADE_HEIGHT
+  //#define ENABLE_LEVELING_FADE_HEIGHT
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
     #define DEFAULT_LEVELING_FADE_HEIGHT 10.0 // (mm) Default fade height.
   #endif
@@ -2077,7 +2082,7 @@
   //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
   #define MESH_INSET 1              // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
+  #define GRID_MAX_POINTS_X 5       // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   //#define UBL_HILBERT_CURVE       // Use Hilbert distribution for less travel when probing multiple points
@@ -2088,7 +2093,7 @@
   //#define UBL_Z_RAISE_WHEN_OFF_MESH 2.5 // When the nozzle is off the mesh, this value is used
                                           // as the Z-Height correction value.
 
-  //#define UBL_MESH_WIZARD         // Run several commands in a row to get a complete mesh
+  #define UBL_MESH_WIZARD           // Run several commands in a row to get a complete mesh
 
 #elif ENABLED(MESH_BED_LEVELING)
 
@@ -2189,7 +2194,7 @@
 #endif
 
 // Homing speeds (linear=mm/min, rotational=°/min)
-#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) }
+#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (8*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
